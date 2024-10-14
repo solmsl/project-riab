@@ -2,14 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "./index.js",
+      "src": "src/api/index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "src/client/index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "../client/(.*)",
-      "dest": "/index.html"
+      "src": "/api/(.*)",
+      "dest": "src/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "src/client/index.html"
     }
   ]
 }
