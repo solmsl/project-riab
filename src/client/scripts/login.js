@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Error: ' + data.error || 'Error al iniciar sesion.');
             }
         } catch (error) {
+            alert("Error con el servidor");
             console.error('Error al iniciar sesion :c ', error);
             // document.querySelector('.error').style.display = 'block';
         }
