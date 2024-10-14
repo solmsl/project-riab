@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try { //luego cambiar el localhost a project-riab.vercel.app, por el momento dejarlo asi
-            const response = await fetch('http://project-riab.vercel.app/rescatistas/login', {
+            const response = await fetch('https://project-riab.vercel.app/rescatistas/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
