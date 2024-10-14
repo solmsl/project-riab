@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 app.use(
   cors({
     credentials: true,
-    origin: "https://riab-project.vercel.app",
+    origin: "https://project-riab.vercel.app",
     methods: "GET,OPTIONS,PUT,PATCH,POST,DELETE",
   })
 );
