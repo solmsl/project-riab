@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db_sequelize');
 
-// Definir la estructura de la tabla mascotas
 const mascotas = sequelize.define('mascotas', {
   id: {
     type: DataTypes.INTEGER,

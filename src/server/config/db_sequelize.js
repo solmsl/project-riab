@@ -3,7 +3,9 @@ const { Sequelize } = require('sequelize');
 
 //libreria para acceder a las variables de entorno
 const dotenv = require('dotenv');
-dotenv.config({path: "../vars/.env"});
+
+// Cargar las variables de entorno
+dotenv.config({ path: "../server/.env_EJEMPLO" });
 
 // Connectar a DB
 // const DB_NAME = process.env.DB_NAME;
@@ -53,3 +55,4 @@ const database = new Sequelize( config_db.dbURL, options
 })();
 
 module.exports = database;
+
