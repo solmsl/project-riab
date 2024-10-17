@@ -15,7 +15,10 @@ especieSelect.addEventListener('change', function() {
     razaSelect.innerHTML = '<option value="">Seleccione una raza</option>';
     if (especie) {
         razasPermitidas[especie].forEach(raza => {
-            razaSelect.innerHTML += `<option value="${raza}">${raza}</option>`;
+            const option = document.createElement('option');
+            option.value = raza;
+            option.textContent = raza;
+            razaSelect.appendChild(option);
         });
     }
 });

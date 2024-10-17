@@ -1,7 +1,22 @@
+const { body, validationResult } = require('express-validator');
 const mascotas = require('../models/modelMascotas');
+
+// Validaciones para crear y actualizar una mascota
+const validarMascota = [
+  body('nombreApodo').notEmpty().withMessage('El nombre o apodo es requerido.'),
+  body('especie').notEmpty().withMessage('La especie es requerida.'),
+  body('raza').notEmpty().withMessage('La raza es requerida.'),
+  body('color').notEmpty().withMessage('El color es requerido.'),
+  body('anioNacimiento').notEmpty().withMessage('El año de nacimiento es requerido.')
+];
 
 // Crear nueva mascota
 const crearMascotas = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, message: errors.array() });
+  }
+
   try {
     const nuevaMascota = await mascotas.create(req.body);
     res.status(201).json({
@@ -61,6 +76,11 @@ const getMascotaById = async (req, res) => {
 // Actualizar una mascota
 const actualizarMascota = async (req, res) => {
   const { id } = req.params;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, message: errors.array() });
+  }
+
   try {
     const [updated] = await mascotas.update(req.body, {
       where: { id }
@@ -115,5 +135,6 @@ module.exports = {
   getAllMascotas,
   getMascotaById,
   actualizarMascota,
-  eliminarMascota
+  eliminarMascota,
+  validarMascota
 };
