@@ -24,7 +24,7 @@ especieSelect.addEventListener('change', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('mascotaForm');
+    const form = document.getElementById('mascota-form');
     const submitButton = document.getElementById('btn-confirmar');
 
     // Habilitar/deshabilitar el botón de envío basado en la validez del formulario
