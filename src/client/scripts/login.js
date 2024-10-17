@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try { //luego cambiar el localhost a project-riab.vercel.app, por el momento dejarlo asi
-            const response = await fetch('https://project-riab-api.vercel.app/rescatistas/login', {
+            const response = await fetch('https://riab-api.vercel.app/rescatistas/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('token', data.data.token);
 
                 form.reset();
-
-                // window.location.href = 'https://riab-api.vercel.app/rescatistas/rescatistas.html';
 
                 window.location.href = 'https://project-riab.vercel.app/soloRescatistas/inicio-res.html';
         
