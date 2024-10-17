@@ -33,10 +33,6 @@ const mascotas = sequelize.define('mascotas', {
       notEmpty: {
         msg: 'El campo especie no puede estar vacío'
       },
-      isIn: {
-        args: [['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato', 'otro']],
-        msg: 'La especie debe ser uno de los valores permitidos: perro, gato, loro, tortuga, conejo, pato, otro.'
-      }
     }
   },
   raza: {
@@ -46,10 +42,6 @@ const mascotas = sequelize.define('mascotas', {
       notEmpty: {
         msg: 'El campo raza no puede estar vacío'
       },
-      isIn: {
-        args: [['labrador', 'bulldog', 'beagle', 'poodle', 'chihuahua', 'persa', 'siamés', 'bengalí', 'maine coon', 'holland lop', 'rex', 'agaporni', 'otro']],
-        msg: 'La raza debe ser uno de los valores permitidos o "otro".'
-      }
     }
   },
   color: {
@@ -60,10 +52,6 @@ const mascotas = sequelize.define('mascotas', {
       notEmpty: {
         msg: 'El campo color no puede estar vacío'
       },
-      isIn: {
-        args: [['negro', 'blanco', 'marrón', 'gris', 'otro']],
-        msg: 'El color debe ser uno de los valores permitidos: negro, blanco, marrón, gris, otro.'
-      }
     }
   },
   anio_nacimiento: {
@@ -73,10 +61,6 @@ const mascotas = sequelize.define('mascotas', {
       isInt: {
         msg: 'El año de nacimiento debe ser un número entero.'
       },
-      isIn: {
-        args: [[2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]],
-        msg: 'El año de nacimiento debe estar entre el año 2000 y el 2024.'
-      }
     }
   }
 }, { timestamps: false });

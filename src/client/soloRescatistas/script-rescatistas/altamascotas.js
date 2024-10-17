@@ -27,12 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('mascota-form');
     const submitButton = document.getElementById('btn-confirmar');
 
-    // Habilitar/deshabilitar el botón de envío basado en la validez del formulario
     form.addEventListener('input', () => {
         const isValid = form.checkValidity();
         submitButton.disabled = !isValid;
 
-        // Mostrar/ocultar mensajes de error
         Array.from(form.elements).forEach(input => {
             if (!input.checkValidity()) {
                 input.classList.add('is-invalid');
@@ -42,11 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Manejar el envío del formulario
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const nombreApodo = document.getElementById('nombre_apodo').value;
+        const nombreApodo = document.getElementById('nombreApodo').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('raza').value;
         const color = document.getElementById('color').value;
