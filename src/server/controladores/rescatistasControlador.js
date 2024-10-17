@@ -100,11 +100,12 @@ const crear = async (req, res) => {
       const errores = error.errors.map(err => err.message);
       return res.status(400).json({ error: errores });
     }
-    console.log(error);
+    // console.log(error);
 
-    return res.status(500).json({ 
-      success: false,
-      error: error });
+    // return res.status(500).json({ 
+    //   success: false,
+    //   error: error });
+    return console.log(error)
   }
 }
 
