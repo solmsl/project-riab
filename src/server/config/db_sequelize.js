@@ -1,47 +1,35 @@
 const { Sequelize } = require('sequelize');
-const {pg} = require('pg');
-//libreria para acceder a las variables de entorno
+const { Client } = require('pg'); // Asegúrate de usar 'Client' para PostgreSQL
 const dotenv = require('dotenv');
-dotenv.config({path: "../vars/.env"});
 
-// Connectar a DB
-// const DB_NAME = process.env.DB_NAME;
-// const DB_USER = process.env.DB_USER;
-// const DB_PASSWORD = process.env.DB_PASSWORD;
-// const DB_HOST = process.env.DB_HOST;
+// Cargar las variables de entorno
+dotenv.config({ path: "../vars/.env" });
 
-const database = new Sequelize(
-  // DB_NAME || 'riab', 
-  // DB_USER || 'root', 
-  // DB_PASSWORD || '', 
-  // {
-  //   host: DB_HOST || '127.0.0.1',
-  //   dialect: 'mysql'
-  // }
-  {
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DATABASE,
-  host: process.env.POSTGRES_HOST,
-  dialectModule: pg,
-  dialect: "postgres",
+// Configuración de PostgreSQL
+const database = new Sequelize({
+  database: process.env.POSTGRES_DATABASE, // Nombre de la base de datos
+  username: process.env.POSTGRES_USER,    // Usuario de la base de datos
+  password: process.env.POSTGRES_PASSWORD, // Contraseña del usuario
+  host: process.env.POSTGRES_HOST || '127.0.0.1', // Host de la base de datos
+  dialect: 'postgres',                     // Dialecto de la base de datos
+  dialectModule: Client,                   // Módulo de dialecto
   dialectOptions: {
     ssl: {
-      require: true,
-      rejectUnauthorized: false,
+      require: true,                       // Habilitar SSL
+      rejectUnauthorized: false,           // No rechazar conexiones no autorizadas
     },
-  }, 
-}
-);
+  },
+});
 
-// Testeamos la conexión con la bd
-// (async () => {
-//   try {
-//     await database.authenticate();
-//     console.log('La conexión se ha establecido exitosamente.');
-//   } catch (error) {
-//     console.error('No se puede conectar a la base de datos:', error);
-//   }
-// })();
+// Testeamos la conexión con la base de datos
+(async () => {
+  try {
+    await database.authenticate();
+    console.log('La conexión se ha establecido exitosamente a PostgreSQL.');
+  } catch (error) {
+    console.error('No se puede conectar a la base de datos:', error);
+  }
+})();
 
+// Exportar la instancia de la base de datos
 module.exports = database;
