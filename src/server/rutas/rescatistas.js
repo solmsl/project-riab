@@ -8,7 +8,7 @@ const resController = require('../controladores/rescatistasControlador');
 const autorizar = require('../middlewares/auth');
 
 /**rutas con middleware */
-router.get('/',autorizar.verificacion, resController.obtenerTodos);
+router.get('/', resController.obtenerTodos);
 router.get('/:dni', autorizar.verificacion, resController.obtener);
 router.put('/:dni', autorizar.verificacion, resController.actualizar);
 router.delete('/:dni', autorizar.verificacion, resController.borrar);
